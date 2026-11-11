@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#090a0f" />
+  <meta name="description" content="Semua link Michael n'u dalam satu tempat." />
+  <title>Michael n'u | All links</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg: #090a0f;
+      --panel: rgba(19, 21, 30, .78);
+      --panel-hover: #1c202c;
+      --line: rgba(255,255,255,.09);
+      --text: #f4f5f8;
+      --muted: #9298a8;
+      --accent: #b6ff65;
+      --accent-2: #8ce63a;
+      --shadow: 0 24px 80px rgba(0,0,0,.38);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--text);
+      font-family: "DM Sans", sans-serif;
+      background:
+        radial-gradient(ellipse at 50% -15%, rgba(146,255,72,.13), transparent 43%),
+        radial-gradient(ellipse at 100% 70%, rgba(94,103,255,.08), transparent 35%),
+        var(--bg);
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: .18;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.12'/%3E%3C/svg%3E");
+      z-index: -1;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .wrap {
+      width: min(100% - 36px, 560px);
+      margin: 0 auto;
+      padding: 34px 0 28px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 44px;
+    }
+
+    .brand {
+      font: 700 13px "Space Grotesk", sans-serif;
+      letter-spacing: .17em;
+      text-transform: uppercase;
+      color: #cbd0dc;
+    }
+
+    .live {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--muted);
+      font-size: 11px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 12px var(--accent);
+    }
+
+    .profile {
+      text-align: center;
+      animation: rise .7s ease both;
+    }
+
+    .avatar-shell {
+      width: 106px;
+      height: 106px;
+      margin: 0 auto 20px;
+      padding: 3px;
+      border-radius: 34px;
+      background: linear-gradient(145deg, var(--accent), #343a4a 60%, #171a24);
+      box-shadow: 0 12px 45px rgba(182,255,101,.12);
+      transform: rotate(-4deg);
+    }
+
+    .avatar {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      border-radius: 31px;
+      background: #11141c;
+      transform: rotate(4deg);
+    }
+
+    .avatar img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 35%;
+    }
+
+    .eyebrow {
+      color: var(--accent);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .23em;
+      text-transform: uppercase;
+      margin: 0 0 10px;
+    }
+
+    h1 {
+      margin: 0;
+      font: 700 clamp(34px, 8vw, 46px)/1 "Space Grotesk", sans-serif;
+      letter-spacing: -.065em;
+    }
+
+    .bio {
+      color: var(--muted);
+      max-width: 360px;
+      margin: 14px auto 0;
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .location {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      color: #b8becb;
+      font-size: 11px;
+      margin-top: 16px;
+      padding: 7px 11px;
+      border: 1px solid var(--line);
+      border-radius: 99px;
+      background: rgba(255,255,255,.025);
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 38px 2px 13px;
+    }
+
+    .section-head h2 {
+      margin: 0;
+      font: 600 12px "Space Grotesk";
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: #d8dce5;
+    }
+
+    .section-head span {
+      color: #737b8b;
+      font-size: 10px;
+    }
+
+    .links { display: grid; gap: 10px; }
+
+    .link-card {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-height: 72px;
+      padding: 13px 15px;
+      border: 1px solid var(--line);
+      border-radius: 17px;
+      background: var(--panel);
+      backdrop-filter: blur(14px);
+      box-shadow: 0 5px 18px rgba(0,0,0,.12);
+      transition: transform .22s ease, border-color .22s ease, background .22s ease;
+      animation: rise .6s ease both;
+    }
+
+    .link-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(182,255,101,.36);
+      background: var(--panel-hover);
+    }
+
+    .link-icon {
+      flex: 0 0 43px;
+      height: 43px;
+      display: grid;
+      place-items: center;
+      border-radius: 13px;
+      background: rgba(255,255,255,.055);
+      font-size: 19px;
+    }
+
+    .link-copy { min-width: 0; flex: 1; }
+    .link-title { font-size: 14px; font-weight: 700; display: block; }
+
+    .link-desc {
+      display: block;
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .arrow {
+      color: #7e8796;
+      font-size: 18px;
+      transition: transform .2s ease;
+    }
+
+    .link-card:hover .arrow {
+      transform: translate(3px,-3px);
+      color: var(--accent);
+    }
+
+    .feature {
+      margin-top: 24px;
+      padding: 19px;
+      border-radius: 19px;
+      border: 1px solid rgba(182,255,101,.18);
+      background: linear-gradient(125deg,rgba(182,255,101,.10),rgba(255,255,255,.025) 65%);
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .feature-icon {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border-radius: 13px;
+      background: rgba(182,255,101,.12);
+      font-size: 20px;
+    }
+
+    .feature strong { display: block; font-size: 13px; }
+
+    .feature p {
+      margin: 4px 0 0;
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 1.5;
+    }
+
+    .feature a {
+      margin-left: auto;
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .contact-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .contact-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 14px 10px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      color: #dce0e9;
+      font-size: 12px;
+      font-weight: 600;
+      background: rgba(255,255,255,.035);
+      transition: .2s;
+      cursor: pointer;
+      font-family: inherit;
+    }
+
+    .contact-btn:hover {
+      border-color: rgba(182,255,101,.35);
+      color: var(--accent);
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 42px;
+      color: #697181;
+      font-size: 10px;
+      letter-spacing: .08em;
+    }
+
+    footer b { color: #c3c9d4; font-weight: 600; }
+
+    .toast {
+      position: fixed;
+      bottom: 22px;
+      left: 50%;
+      transform: translate(-50%,20px);
+      opacity: 0;
+      pointer-events: none;
+      padding: 11px 16px;
+      border-radius: 99px;
+      background: #eaffd5;
+      color: #18220f;
+      font-size: 12px;
+      font-weight: 700;
+      transition: .25s;
+      box-shadow: var(--shadow);
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translate(-50%,0);
+    }
+
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 480px) {
+      .wrap { padding-top: 24px; }
+      .topbar { margin-bottom: 38px; }
+      .feature { align-items: flex-start; }
+      .feature a { padding-top: 4px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="wrap">
+    <header class="topbar">
+      <div class="brand">M / N'U &nbsp;•&nbsp; PERSONAL SPACE</div>
+      <div class="live"><span class="dot"></span> ONLINE PRESENCE</div>
+    </header>
+
+    <section class="profile">
+      <div class="avatar-shell">
+        <div class="avatar">
+          <img src="pp.jpeg" alt="Foto profil Michael n'u" />
+        </div>
+      </div>
+
+      <p class="eyebrow">WELCOME GUYS</p>
+      <h1 id="displayName">Michael n'u</h1>
+      <p class="bio" id="bio">All here wht u need just tell me.</p>
+      <div class="location">✦ <span id="location">Indonesia</span></div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <h2>Find me around</h2>
+        <span>01 / SOCIALS</span>
+      </div>
+      <div class="links" id="socialLinks"></div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <h2>Explore more</h2>
+        <span>02 / MY WORLD</span>
+      </div>
+      <div class="links" id="otherLinks"></div>
+    </section>
+
+    <div class="feature">
+      <div class="feature-icon">✳</div>
+      <div>
+        <strong>Let's build something.</strong>
+        <p>Punya ide, project, atau sekadar mau ngobrol? Pintu inbox terbuka.</p>
+      </div>
+      <a id="featureContact" href="mailto:hello@example.com">Say hello ↗</a>
+    </div>
+
+    <div class="contact-row">
+      <a class="contact-btn" id="emailButton" href="mailto:hello@example.com">✉ Email me</a>
+      <button class="contact-btn" id="shareButton" type="button">↗ Share profile</button>
+    </div>
+
+    <footer>
+      MADE WITH INTENTION &nbsp;·&nbsp;
+      <b id="footerName">MICHAEL N'U</b> © <span id="year"></span>
+    </footer>
+  </main>
+
+  <div class="toast" id="toast">Link berhasil disalin</div>
+  <script src="script.js"></script>
+</body>
+</html>
